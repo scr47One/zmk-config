@@ -19,15 +19,18 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &LALT &kp N1 &kp N7 &kp N3>;
+                = <&macro_press   &kp LALT>
+                , <&macro_tap &kp N1 &kp N7 &kp N3>
+                , <&macro_release &kp LALT>;
         };
         nt: nt {
             label = "nt";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                =  <&macro_tap &kp LALT &kp N0 &kp N2 &kp N4 &kp N1>
-                ;
+                =  <&macro_press   &kp LALT>
+                , <&macro_tap &kp N0 &kp N2 &kp N4 &kp N1>
+                , <&macro_release &kp LALT>;
         };
     };
 
