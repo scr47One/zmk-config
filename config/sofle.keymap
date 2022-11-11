@@ -23,15 +23,15 @@
         };
         rshftcaps: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
+            label = "TAP_DANCE_1";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp RSHFT>, <&kp CAPSLOCK>;
         };
         //double quote apostrophe
-            aposdq: tap_dance_1 {
+            aposdq: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
+            label = "TAP_DANCE_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SQT>, <&kp LS(SQT)>;
