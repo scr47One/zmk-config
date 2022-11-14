@@ -103,7 +103,7 @@
             tapping-term-ms = <200>;
             bindings = <&kp SLASH>, <&kp BSLH>;
         };
-        enie: enie {
+        enie: eniem_enie {
             compatible = "zmk,behavior-mod-morph";
             label = "ENIE";
             #binding-cells = <0>;
