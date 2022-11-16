@@ -10,8 +10,19 @@
 &mt {
     tapping-term-ms = <200>;
 };
-
+#define default_layer 0
+#define lower_layer   1
+#define raise_layer   2
+#define adjust_layer 3
 / {
+    
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
 
     macros {
         iexc: iexc {
@@ -130,6 +141,23 @@
 // |     | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
 //              |      |       |       |      |      |  |      |      |      |       |      |
             bindings = <
+&kp LA(LEFT) &kp LC(N1) &kp LC(N2) &kp LC(N3) &kp LC(N4) &kp LC(N5)                         &kp LA(n1) &kp LA(n2) &kp LA(n3) &kp LA(n4) &kp LA(n5) &kp LA(RIGHT)
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp LG(LS(S)) &kp LC(F)                   &kp LC(K) &kp LC(LEFT)    &kp UP   &kp LC(RIGHT)    &kp LC(DEL)   &kp LC(BSPC)
+&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &kp LG(V)       &kp LG(S)                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
+&trans     &kp LC(Z)   &kp LC(X)    &kp LC(C)   &kp LC(V)  &kp LC(Y)  &trans   &trans  &kp TAB    &kp HOME    &trans   &kp END     &trans  &trans
+                        &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+        adjust_layer {
+// ------------------------------------------------------------------------------------------------------------
+// |BTCLR| BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
+// |     | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
+// |     | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
+// |     | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+//              |      |       |       |      |      |  |      |      |      |       |      |
+            bindings = <
 &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &trans    &trans    &trans   &trans    &trans  &trans
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp LG(LS(S)) &kp LC(F)                   &kp LC(K) &kp LC(LEFT)    &kp UP   &kp LC(RIGHT)    &kp LC(DEL)   &kp LC(BSPC)
 &trans     &kp LALT     &kp LCTRL    &kp LSHFT    &kp LG(V)       &kp LG(S)                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
@@ -141,4 +169,3 @@
         };
     };
 };
-//TODO: AñADIR CAPA DE AJUSTE Y CAPA DE JUEGOS
