@@ -90,6 +90,13 @@
             tapping-term-ms = <200>;
             bindings = <&kp SLASH>, <&kp BSLH>;
         };
+        nottilde: tap_dance_5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_5";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp TILDE>, <&kp RA(BSLH)>;
+        };
 
     };
 
@@ -124,9 +131,9 @@
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8          &kp F9    &kp F10   &kp F11
-&kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5                    &kp N6    &kp N7   &kp N8          &kp N9    &kp N0    &kp F12
-&trans    &kp EQUAL  &kp MINUS    &kp LBRC    &kp LBKT  &kp LPAR                 &kp RPAR &kp RBKT &kp RBRC &kp PERCENT  &kp PIPE2  &kp PIPE
-&trans    &excliexcl &kp MINUS &kp KP_PLUS &kp LBRC  &kp RBRC  &trans   &trans &kp AMPS  &slshbslsh &kp SEMICOLON  &kp COLON &kp DLLR  &trans
+&kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5                    &kp N6    &kp N7   &kp N8          &kp N9    &kp N0    &nottilde
+&trans    &kp EQUAL  &kp MINUS    &kp LBRC    &kp LBKT  &kp LPAR                 &kp RPAR &kp RBKT &kp RBRC &kp PERCENT  &kp CARET  &kp PIPE
+&trans    &excliexcl &kp AT &kp KP_PLUS &kp HASH  &kp ASTRK  &trans   &trans &kp AMPS  &slshbslsh &kp SEMICOLON  &kp COLON &kp DLLR  &trans
                     &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
             >;
 
