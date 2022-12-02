@@ -1,10 +1,10 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+      url-base: https://github.com/scr47One/
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: zmk-config-2
       revision: pr/1243
       import: app/west.yml
   self:
