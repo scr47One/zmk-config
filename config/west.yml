@@ -5,7 +5,7 @@ manifest:
   projects:
     - name: zmk
       remote: scr47One
-      revision: main
+      revision: pr/1243
       import: app/west.yml
   self:
     path: config
