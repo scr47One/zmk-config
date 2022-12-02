@@ -3,9 +3,9 @@ manifest:
     - name: scr47One
       url-base: https://github.com/scr47One
   projects:
-    - name: zmk-config-2
+    - name: zmk
       remote: scr47One
-      revision: pr/1243
+      revision: main
       import: app/west.yml
   self:
     path: config
