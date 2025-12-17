@@ -24,13 +24,13 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         adjust_layer_windows {
-            if-layers = <LOWER RAISE_WINDOWS>;
-            then-layer = <ADJUST>;
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
         
         adjust_layer_macos {
-            if-layers = <LOWER RAISE_MACOS>;
-            then-layer = <ADJUST>;
+            if-layers = <1 6>;
+            then-layer = <3>;
         };
         
         
