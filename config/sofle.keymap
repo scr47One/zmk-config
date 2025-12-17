@@ -129,6 +129,17 @@
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
+        DEFAULT_MACOS {
+            bindings = < 
+&kp LA(RS(QMARK))  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
+&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
+&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &ieniemac    &aposdq
+&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
+                &kp LALT &kp LCTRL &kp LCMD &mo 1  &kp RET    &kp SPACE &mo 6  &kp RCMD  &kp RCTRL &kp RALT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
 
         LOWER {
             bindings = <
@@ -150,18 +161,6 @@
 &trans     &kp LC(Z)   &kp LC(X)    &kp LC(C)   &kp LC(V)  &kp LC(Y)  &trans        &trans  &kt RIGHT_ALT    &kp HOME    &none   &kp END     &none  &none
                         &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        DEFAULT_MACOS {
-            bindings = < 
-&kp LA(RS(QMARK))  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
-&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &ieniemac    &aposdq
-&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
-                &kp LALT &kp LCTRL &kp LCMD &mo 1  &kp RET    &kp SPACE &mo 6  &kp RCMD  &kp RCTRL &kp RALT
-            >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
