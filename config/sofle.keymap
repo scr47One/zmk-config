@@ -10,16 +10,25 @@
 &mt {
     tapping-term-ms = <200>;
 };
-#define default_layer 0
-#define lower_layer   1
-#define raise_layer   2
-#define adjust_layer 3
+#define DEFAULT_WINDOWS 0
+#define LOWER_WINDOWS   1
+#define RAISE_WINDOWS   2
+#define DEFAULT_MACOS   4
+#define LOWER_MACOS     5
+#define RAISE_MACOS     6
+#define ADJUST 3
+
 / {
     
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        tri_layer {
+        tri_layer_windows {
             if-layers = <1 2>;
+            then-layer = <3>;
+        };
+
+        tri_layer_macos {
+            if-layers = <1 6>;
             then-layer = <3>;
         };
     };
@@ -35,6 +44,30 @@
                 = 
                 <&macro_press   &kp LALT>
                 , <&macro_tap &kp KP_N1 &kp KP_N7 &kp KP_N3>
+                , <&macro_release &kp LALT>;
+        };
+        iqmark: iqmark {
+            label = "iqmark";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                =
+                <&macro_press   &kp LALT>
+                , <&macro_tap &kp KP_N1 &kp KP_N6 &kp KP_N8>
+                , <&macro_release &kp LALT>;
+        };
+        ieniemac: ieniemac {
+            label = "ieniemac";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                =
+                <&macro_press   &kp LALT>
+                , <&macro_tap &kp N>
                 , <&macro_release &kp LALT>;
         };
     };
@@ -90,47 +123,100 @@
 
     keymap {
         compatible = "zmk,keymap";
-        default_layer {
-            bindings = <
-&kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
+        DEFAULT_WINDOWS {
+            bindings = < 
+/* ¿ | 1 | 2 | 3 | 4 | 5 |       | 6 | 7 | 8 | 9 | 0 | ? */
+&iqmark  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
+/* Esc | Q | W | E | R | T |       | Y | U | I | O | P | Bksp */
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
+/* Tab | A | S | D | F | G |       | H | J | K | L | Ñ | ' " */
 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &kp RA(N)     &aposdq
-&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &none     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
+/* LShft | Z | X | C | V | B | Mute | PLAY/PAUSE  | N | M | , | . | / | RShft */
+&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
+/* Cmd | Alt | Ctrl | Lower | Enter | Space | Raise | Ctrl | Alt | Cmd */
                 &kp LCMD &kp LALT &kp LCTRL &mo 1  &kp RET    &kp SPACE &mo 2  &kp RCTRL &kp RALT  &kp RCMD
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
+        DEFAULT_MACOS {
+            bindings = < 
+/* ¿ | 1 | 2 | 3 | 4 | 5 |       | 6 | 7 | 8 | 9 | 0 | ? */
+&kp LA(RS(QMARK))  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
+/* Esc | Q | W | E | R | T |       | Y | U | I | O | P | Bksp */
+&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
+/* Tab | A | S | D | F | G |       | H | J | K | L | Ñ | ' " */
+&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &ieniemac    &aposdq
+/* LShft | Z | X | C | V | B | Mute | PLAY/PAUSE  | N | M | , | . | / | RShft */
+&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
+/* Cmd | Alt | Ctrl | Lower | Enter | Space | Raise | Ctrl | Alt | Cmd */
+                &kp LALT &kp LCTRL &kp LCMD &mo 1  &kp RET    &kp SPACE &mo 6  &kp RCMD  &kp RCTRL &kp RALT
+            >;
 
-        lower_layer {
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        LOWER_WINDOWS {
             bindings = <
+/*   | F1 | F2 | F3 | F4 | F5 |       | F6 | F7 | F8 | F9 | F10 | F11 */
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8          &kp F9    &kp F10   &kp F11
+/* ` | 1 | 2 | 3 | 4 | 5 |       | 6 | 7 | 8 | 9 | 0 | ~ */
 &kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5                    &kp N6    &kp N7   &kp N8          &kp N9    &kp N0    &nottilde
+/*   | = | - | [ | { | ( |       | ) | } | ] | % | ^ | | */
 &trans    &kp EQUAL  &kp MINUS    &kp LBRC    &kp LBKT  &kp LPAR                 &kp RPAR &kp RBKT &kp RBRC &kp PERCENT  &kp CARET  &kp PIPE
+/*   | ! | @ | + | # | * |       | & | / | ; | : | $ |   */
 &trans    &excliexcl &kp AT &kp KP_PLUS &kp HASH  &kp ASTRK  &trans   &trans &kp AMPS  &slshbslsh &kp SEMICOLON  &kp COLON &kp DLLR  &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   */
                     &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        raise_layer {
+        RAISE_WINDOWS {
             bindings = <
+/* ← | LC(1) | LC(2) | LC(3) | LC(4) | LC(5) |       | LA(1) | LA(2) | LA(3) | LA(4) | LA(5) | → */
 &kp LA(LEFT) &kp LC(N1) &kp LC(N2) &kp LC(N3) &kp LC(N4) &kp LC(N5)                         &kp LA(N1) &kp LA(N2) &kp LA(N3) &kp LA(N4) &kp LA(N5) &kp LA(RIGHT)
+/*   | Ins | PrtSc | Menu | LG(S) | LC(F) |       | LC(K) | ← | ↑ | → | LC(Del) | LC(Bksp) */
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp LG(LS(S)) &kp LC(F)                   &kp LC(K) &kp LC(LEFT)    &kp UP   &kp LC(RIGHT)    &kp LC(DEL)   &kp LC(BSPC)
+/*   | Alt | Ctrl | Shift | LG(V) | LG(S) |       | PgDn | ← | ↓ | → | Del | Bksp */
 &trans     &kp LALT     &kp LCTRL    &kp LSHFT    &kp LG(V)       &kp LG(S)                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans     &kp LC(Z)   &kp LC(X)    &kp LC(C)   &kp LC(V)  &kp LC(Y)  &trans   &trans  &kp TAB    &kp HOME    &trans   &kp END     &trans  &trans
+/*   | LC(Z) | LC(X) | LC(C) | LC(V) | LC(Y) |       | Tab | Home |   | End |   |   */
+&trans     &kp LC(Z)   &kp LC(X)    &kp LC(C)   &kp LC(V)  &kp LC(Y)  &trans   &trans  &kt RIGHT_ALT    &kp HOME    &trans   &kp END     &trans  &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   */
                         &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
-        adjust_layer {
+
+            RAISE_MACOS {
+                bindings = <
+/* ← | LC(1) | LC(2) | LC(3) | LC(4) | LC(5) |       | LA(1) | LA(2) | LA(3) | LA(4) | LA(5) | → */
+&kp LC(LEFT) &kp LC(N1) &kp LC(N2) &kp LC(N3) &kp LC(N4) &kp LC(N5)                         &kp LA(N1) &kp LA(N2) &kp LA(N3) &kp LA(N4) &kp LA(N5) &kp LC(RIGHT)
+/*   | Ins | PrtSc | Menu | LA(S) | LC(F) |       | LC(K) | ← | ↑ | → | LC(Del) | LC(Bksp) */
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp LCMD(LS(4)) &kp LCMD(F)                   &kp PG_UP &kp LA(LEFT)    &kp UP   &kp LA(RIGHT)    &kp LA(DEL)   &kp LA(BSPC)
+/*   | Alt | Ctrl | Shift | LA(V) | LA(S) |       | PgDn | ← | ↓ | → | Del | Bksp */
+&trans     &kp LCTRL     &kp LALT    &kp LSHFT    &kp LA(V)       &kp LA(S)                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
+/*   | LC(Z) | LC(X) | LC(C) | LC(V) | LC(Y) |       | Tab | Home |   | End |   |   */
+&trans     &kp LCMD(Z)   &kp LCMD(X)    &kp LCMD(C)   &kp LCMD(V)  &kp LCMD(Y)  &trans   &trans  &kt RIGHT_COMMAND &kp HOME    &trans   &kp END     &trans  &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   |   */
+                        &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+        ADJUST {
             bindings = <
+/* BT_CLR | BT_SEL 0 | BT_SEL 1 | BT_SEL 2 | BT_SEL 3 | BT_SEL 4 |       |   |   |   |   |   |   */
 &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &trans    &trans    &trans   &trans    &trans  &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp LG(LS(S)) &kp LC(F)                   &kp LC(K) &kp LC(LEFT)    &kp UP   &kp LC(RIGHT)    &kp LC(DEL)   &kp LC(BSPC)
-&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &kp LG(V)       &kp LG(S)                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans     &kp LC(Z)   &kp LC(X)    &kp LC(C)   &kp LC(V)  &kp LC(Y)  &trans   &trans  &kp TAB    &kp HOME    &trans   &kp END     &trans  &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   */
+&trans    &trans    &trans    &trans    &to DEFAULT_MACOS    &to DEFAULT_WINDOWS             &trans    &trans    &trans    &trans    &trans    &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   */
+&trans    &trans    &trans    &trans    &trans    &trans             &trans    &trans    &trans    &trans    &trans    &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   */
+&trans    &trans    &trans    &trans    &trans    &trans             &trans    &trans    &trans    &trans    &trans    &trans
+/*   |   |   |   |   |   |       |   |   |   |   |   |   */
                         &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
