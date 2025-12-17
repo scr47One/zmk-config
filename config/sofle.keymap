@@ -13,24 +13,25 @@
 };
 
 #define DEFAULT_WINDOWS 0
-#define LOWER 1
+#define LOWER_WINDOWS 1
 #define RAISE_WINDOWS 2
-#define ADJUST 3
-#define DEFAULT_MACOS 4
-#define RAISE_MACOS 6
+#define DEFAULT_MACOS 3
+#define LOWER_MACOS 4
+#define RAISE_MACOS 5
+#define ADJUST 6
 
 / {
     
     conditional_layers {
         compatible = "zmk,conditional-layers";
         adjust_layer_windows {
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <LOWER_WINDOWS RAISE_WINDOWS>;
+            then-layer = <ADJUST>;
         };
         
         adjust_layer_macos {
-            if-layers = <1 6>;
-            then-layer = <3>;
+            if-layers = <LOWER_MACOS RAISE_MACOS>;
+            then-layer = <ADJUST>;
         };
         
         
@@ -124,24 +125,13 @@
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &kp RA(N)     &aposdq
 &lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
-                &kp LCMD &kp LALT &kp LCTRL &mo 1  &kp RET    &kp SPACE &mo 2  &kp RCTRL &kp RALT  &kp RCMD
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-        DEFAULT_MACOS {
-            bindings = < 
-&kp LA(RS(QMARK))  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
-&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &ieniemac    &aposdq
-&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
-                &kp LALT &kp LCTRL &kp LCMD &mo 1  &kp RET    &kp SPACE &mo 6  &kp RCMD  &kp RCTRL &kp RALT
+                &kp LCMD &kp LALT &kp LCTRL &mo LOWER_WINDOWS  &kp RET    &kp SPACE &mo RAISE_WINDOWS  &kp RCTRL &kp RALT  &kp RCMD
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        LOWER {
+        LOWER_WINDOWS {
             bindings = <
 &trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8          &kp F9    &kp F10   &kp F11
 &kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5                    &kp N6    &kp N7   &kp N8          &kp N9    &kp N0    &nottilde
@@ -164,6 +154,30 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
+        DEFAULT_MACOS {
+            bindings = < 
+&kp LA(RS(QMARK))  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                      &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp QMARK
+&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                       &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
+&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                       &kp H  &kp J     &kp K     &kp L    &ieniemac    &aposdq
+&lshftcaps &kp Z  &kp X    &kp C    &kp V     &kp B  &kp C_MUTE &kp C_PP     &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &rshftcaps
+                &kp LALT &kp LCTRL &kp LCMD &mo LOWER_MACOS  &kp RET    &kp SPACE &mo RAISE_MACOS  &kp RCMD  &kp RCTRL &kp RALT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+    
+        LOWER_MACOS {
+            bindings = <
+&trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8          &kp F9    &kp F10   &kp F11
+&kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5                    &kp N6    &kp N7   &kp N8          &kp N9    &kp N0    &nottilde
+&trans    &kp EQUAL  &kp MINUS    &kp LBRC    &kp LBKT  &kp LPAR                 &kp RPAR &kp RBKT &kp RBRC &kp PERCENT  &kp CARET  &kp PIPE
+&trans    &excliexcl &kp AT &kp KP_PLUS &kp HASH  &kp ASTRK  &trans   &trans &kp AMPS  &slshbslsh &kp SEMICOLON  &kp COLON &kp DLLR  &trans
+                    &trans    &trans      &trans    &trans    &trans   &trans &trans    &trans   &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
         RAISE_MACOS {
         bindings = <
 &kp LC(LEFT) &kp LC(N1) &kp LC(N2) &kp LC(N3) &kp LC(N4) &kp LC(N5)                              &kp LA(N1) &kp LA(N2) &kp LA(N3) &kp LA(N4) &kp LA(N5) &kp LC(RIGHT)
@@ -178,7 +192,7 @@
         ADJUST {
             bindings = <
 &bt BT_CLR_ALL  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_NXT &bt BT_PRV            &none   &none    &none    &none    &none    &none
-&none    &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &to 4    &to 0        &none   &none    &none    &none    &none    &none
+&none    &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2   &to DEFAULT_MACOS    &to DEFAULT_WINDOWS        &none   &none    &none    &none    &none    &none
 &none    &none    &none    &none    &none    &none                                 &none   &none    &none    &none    &none    &none
 &none    &none    &none    &none    &none    &none  &trans                 &trans  &none   &none    &none    &none    &none    &none
                         &trans       &trans       &trans  &trans  &trans   &trans  &trans   &trans    &trans   &trans
