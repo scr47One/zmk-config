@@ -37,7 +37,6 @@
 
     macros {
         iexc: iexc {
-            label = "iexc";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -49,7 +48,6 @@
                 , <&macro_release &kp LALT>;
         };
         iqmark: iqmark {
-            label = "iqmark";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -61,7 +59,6 @@
                 , <&macro_release &kp LALT>;
         };
         ieniemac: ieniemac {
-            label = "ieniemac";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -79,7 +76,6 @@
         //left shift y capslock
         lshftcaps: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp CAPSLOCK>;
@@ -87,7 +83,6 @@
         //right shift y capslock
         rshftcaps: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_1";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp RSHFT>, <&kp CAPSLOCK>;
@@ -95,28 +90,24 @@
         //double quote apostrophe
         aposdq: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SQT>, <&kp LS(SQT)>;
         };
         excliexcl: tap_dance_3 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp EXCL>, <&iexc>;
         };
         slshbslsh: tap_dance_4 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_4";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SLASH>, <&kp BSLH>;
         };
         nottilde: tap_dance_5 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_5";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp TILDE>, <&kp RA(BSLH)>;
