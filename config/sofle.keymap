@@ -177,18 +177,18 @@
 &trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp LCMD(LS(4)) &kp LCMD(F)                    &kp PG_UP &kp LA(LEFT)    &kp UP   &kp LA(RIGHT)    &kp LA(DEL)   &kp LA(BSPC)
 &trans     &kp LCTRL     &kp LALT    &kp LSHFT    &kp LA(V)       &kp LA(S)                      &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
 &trans     &kp LCMD(Z)   &kp LCMD(X)    &kp LCMD(C)   &kp LCMD(V)  &kp LCMD(Y)  &trans   &trans  &kt LCMD &kp HOME    &none   &kp END     &none  &none
-                                &trans       &trans       &trans      &trans  &trans    &trans  &trans    &trans    &trans   &trans
+                                &trans       &trans       &trans    &trans  &trans    &trans  &trans    &trans    &trans   &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         ADJUST {
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &to DEFAULT_MACOS    &to DEFAULT_WINDOWS        &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans                                &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans &trans                 &trans  &trans    &trans    &trans    &trans    &trans    &trans
-                        &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &none   &none    &none    &none    &none    &none
+&none    &none    &none    &none    &to DEFAULT_MACOS    &to DEFAULT_WINDOWS        &none   &none    &none    &none    &none    &none
+&none    &none    &none    &none    &none    &none                                 &none   &none    &none    &none    &none    &none
+&none    &none    &none    &none    &none    &none  &trans                 &trans  &none   &none    &none    &none    &none    &none
+                        &trans       &trans       &trans       &trans  &trans   &trans  &trans   &trans    &trans   &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
