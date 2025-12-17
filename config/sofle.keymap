@@ -16,7 +16,7 @@
 #define LOWER 1
 #define RAISE_WINDOWS 2
 #define ADJUST 3
-//#define DEFAULT_MACOS 4
+#define DEFAULT_MACOS 4
 //#define RAISE_MACOS 6
 
 / {
@@ -186,11 +186,11 @@
 */
         ADJUST {
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &none   &none    &none    &none    &none    &none
-&none    &none    &none    &none    &to DEFAULT_MACOS    &to DEFAULT_WINDOWS        &none   &none    &none    &none    &none    &none
+&bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &none   &none    &none    &none    &none    &none
+&none    &none    &none    &none    &to 4    &to 0        &none   &none    &none    &none    &none    &none
 &none    &none    &none    &none    &none    &none                                 &none   &none    &none    &none    &none    &none
 &none    &none    &none    &none    &none    &none  &trans                 &trans  &none   &none    &none    &none    &none    &none
-                        &trans       &trans       &trans       &trans  &trans   &trans  &trans   &trans    &trans   &trans
+                        &trans       &trans       &trans  &trans  &trans   &trans  &trans   &trans    &trans   &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
