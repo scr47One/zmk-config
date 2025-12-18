@@ -13,14 +13,14 @@
 };
 
 #define DEFAULT_WINDOWS 0
-#define DEFAULT_MACOS 1
-#define NUMPAD 2
-#define ADJUST 3
+#define LOWER_WINDOWS 1
+#define RAISE_WINDOWS 2
 
-#define LOWER_WINDOWS 4
-#define RAISE_WINDOWS 5
-#define LOWER_MACOS 6
-#define RAISE_MACOS 7
+#define DEFAULT_MACOS 3
+#define LOWER_MACOS 4
+#define RAISE_MACOS 5
+
+#define ADJUST 6
 
 
 / {
@@ -36,8 +36,6 @@
             if-layers = <LOWER_MACOS RAISE_MACOS>;
             then-layer = <ADJUST>;
         };
-        
-        
     };
 
     macros {
@@ -202,7 +200,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        
+        /*
         NUMPAD {
             bindings = <
 &none	&none	&none	&none	&none	&none	                    &kp N7	&kp N8	&kp N9	&kp BSPC	&none	    &to DEFAULT_WINDOWS
@@ -211,6 +209,6 @@
 &none	&none	&none	&none	&none	&none	&trans      &trans  &kp N0	&none	&kp DOT	&kp RET	&none	&none
                 &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
             >;
-        };
+        };*/
     };
 };
