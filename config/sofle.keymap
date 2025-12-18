@@ -15,13 +15,13 @@
 #define DEFAULT_WINDOWS 0
 #define DEFAULT_MACOS 1
 #define NUMPAD 2
+#define ADJUST 3
 
-#define LOWER_WINDOWS 3
-#define RAISE_WINDOWS 4
-#define LOWER_MACOS 5
-#define RAISE_MACOS 6
+#define LOWER_WINDOWS 4
+#define RAISE_WINDOWS 5
+#define LOWER_MACOS 6
+#define RAISE_MACOS 7
 
-#define ADJUST 7
 
 / {
     
