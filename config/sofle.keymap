@@ -13,13 +13,15 @@
 };
 
 #define DEFAULT_WINDOWS 0
-#define LOWER_WINDOWS 1
-#define RAISE_WINDOWS 2
-#define DEFAULT_MACOS 3
-#define LOWER_MACOS 4
-#define RAISE_MACOS 5
-#define ADJUST 6
-#define NUMPAD 7
+#define DEFAULT_MACOS 1
+#define NUMPAD 2
+
+#define LOWER_WINDOWS 3
+#define RAISE_WINDOWS 4
+#define LOWER_MACOS 5
+#define RAISE_MACOS 6
+
+#define ADJUST 7
 
 / {
     
