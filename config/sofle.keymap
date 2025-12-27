@@ -180,10 +180,10 @@
 
         RAISE_MACOS {
         bindings = <
-&none  &kp LG(N1) &kp LG(N2) &kp LG(N3)  &kp LG(N4)     &kp LG(N5)                        &kp LC(UP_ARROW) &kp LC(LEFT) &kp LS(LG(GRAVE))     &kp LC(RIGHT) &kp LC(LG(F)) &kp LC(DOWN_ARROW)
+&none  &kp LG(N1) &kp LG(N2) &kp LG(N3)  &kp LG(N4)     &kp LG(N5)                        &kp LC(UP_ARROW) &kp LC(LEFT) &kp LG(GRAVE)     &kp LC(RIGHT) &kp LC(LG(F)) &kp LC(DOWN_ARROW)
 &trans &kp INS    &kp PSCRN  &kp K_CMENU &kp LG(LS(N4)) &kp LG(F)                         &kp PG_UP        &kp LA(LEFT) &kp UP            &kp LA(RIGHT) &kp LA(DEL)   &kp LA(BSPC)
 &trans &kp LCTRL  &kp LALT   &kp LSHFT   &kp LG(A)      &kp LG(SPACE)                     &kp PG_DN        &kp LEFT     &kp DOWN          &kp RIGHT     &kp DEL       &kp BSPC
-&trans &kp LG(Z)  &kp LG(X)  &kp LG(C)   &kp LG(V)      &kp LG(S)     &trans      &trans  &kt LCMD         &kp HOME     &none &kp END       &none         &trans
+&trans &kp LG(Z)  &kp LG(X)  &kp LG(C)   &kp LG(V)      &kp LG(S)     &trans      &trans  &kt LCMD         &kp HOME     &kp LS(LG(GRAVE)) &kp END       &none         &trans
                   &trans  &trans  &trans  &trans  &trans      &trans              &trans  &trans     &trans       &trans        &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
