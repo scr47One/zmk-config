@@ -94,49 +94,49 @@
 
     behaviors {
         //left shift y capslock
-        lshftcaps: tap_dance_0 {
+        lshftcaps: lshftcaps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp CAPSLOCK>;
         };
         //right shift y capslock
-        rshftcaps: tap_dance_1 {
+        rshftcaps: rshftcaps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp RSHFT>, <&kp CAPSLOCK>;
         };
         //double quote apostrophe
-        aposdq: tap_dance_2 {
+        aposdq: aposdq {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SQT>, <&kp LS(SQT)>;
         };
         //exclamation mark i exclamation mark
-        excliexcl: tap_dance_3 {
+        excliexcl: excliexcl {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp EXCL>, <&iexc>;
         };
         //exclamation mark i exclamation mark mac
-        excliexcl_mac: tap_dance_3 {
+        excliexcl_mac:  excliexcl_mac {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp EXCL>, <&iexc_mac>;
         };
         //slash backslash
-        slshbslsh: tap_dance_4 {
+        slshbslsh: slshbslsh {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SLASH>, <&kp BSLH>;
         };
         //tilde backslash
-        nottilde: tap_dance_5 {
+        nottilde: nottilde {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
